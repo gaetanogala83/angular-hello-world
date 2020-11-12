@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-8">
+        <table class="table">
+            <thead>
+                <th>ID</th>
+                <th>ID Destinatario</th>
+                <th>Importo</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fattura of fatture">
+                    <td>{{fattura.id}}</td>
+                    <td>{{fattura.destinatario.id}}</td>
+                    <td>
+                        {{fattura.importo | currency:"EUR"}}
+                    </td>
+                    <td>
+                        <button (click)="setCurrentFattura(fattura)">Seleziona</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-4">
+        <app-fatture-detail [currentFattura]="currentFattura" *ngIf="currentFattura"></app-fatture-detail>
+    </div>
+
+</div>

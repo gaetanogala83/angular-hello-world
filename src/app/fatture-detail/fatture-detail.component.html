@@ -1,0 +1,9 @@
+<h1>
+    {{currentFattura.id}}
+</h1>
+
+<p>
+    {{currentFattura.importo | currency:"EUR"}}
+</p>
+
+<app-detail [detailUser]="currentFattura.destinatario"></app-detail>

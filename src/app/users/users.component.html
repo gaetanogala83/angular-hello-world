@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-8">
+  
+    <table class="table">
+        <thead>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Cognome</th>
+          <th></th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.lastName}}</td>
+            <td>
+              <button mat-flat-button color="primary" (click)="getUser(user)">GET INFO</button>
+            </td>
+            <td>
+              <button (click)="deleteUser(user)">ELIMINA</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+  </div>
+
+  <div class="col-4" *ngIf="currentUser else noUser">
+
+    <app-detail [detailUser]="currentUser" (emitDeleteUser)="deleteUser($event)"></app-detail>
+
+    
+  </div>
+
+  <ng-template #noUser>
+  <div class="col-4">
+      <p>Seleziona un utente </p>
+  </div>
+</ng-template>
+
+
+<div class="row">
+  <div class="col-10 offset-1">
+    <p *ngIf="condominii.length == 0 else showCondominii">In caricamento...</p>
+    <ng-template #showCondominii>
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let condominio of condominii">
+            <td>
+              {{condominio.name}}
+            </td>
+            <td>
+              {{condominio.address}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </div>
+</div>
+
+
+</div>
